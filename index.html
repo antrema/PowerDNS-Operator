@@ -722,7 +722,7 @@
 <h1 id="introduction">Introduction</h1>
 <p><img alt="high-level" src="assets/diagrams-high-level-simple.png" /></p>
 <p><strong>PowerDNS Operator</strong> is a Kubernetes operator that manages PowerDNS service.</p>
-<p>With PowerDNS Operator you can manage zones, records, and other PowerDNS resources directly from Kubernetes. It is designed to be a simple and easy-to-use solution to manage PowerDNS directly from Kubernetes trough Custom Resources. The PowerDNS service can be located inside or outside of Kubernetes, it does not matter since the Operator relies on the PowerDNS API.</p>
+<p>With PowerDNS Operator you can manage zones, records and other PowerDNS resources directly from Kubernetes. It is designed to be a simple and easy-to-use solution to manage PowerDNS directly from Kubernetes trough Custom Resources. The PowerDNS service can be located inside or outside of Kubernetes, it does not matter since the Operator relies on the PowerDNS API.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>This project use the official <a href="https://doc.powerdns.com/authoritative/http-api/">PowerDNS API</a> and cannot be plugged to <a href="https://github.com/PowerDNS-Admin/PowerDNS-Admin">PowerDNS-Admin</a> project which implement its own specific API on top PowerDNS's API. There is no issue if you want to use both projects together, but the operator can only relies on the official API and you may notice issue if you try to use PowerDNS-Admin to manage the same resources as the operator.</p>

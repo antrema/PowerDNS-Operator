@@ -10,24 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://antrema.github.io/powerdns-operator/snippet-example/">
+        <link rel="canonical" href="https://antrema.github.io/powerdns-operator/guides/zones/">
       
       
+        <link rel="prev" href="../../introduction/stability-support/">
       
       
-      <link rel="icon" href="../assets/favicon.png">
+        <link rel="next" href="../rrsets/">
+      
+      
+      <link rel="icon" href="../../assets/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.39">
     
     
       
-        <title>Snippet example - PowerDNS Operator</title>
+        <title>Zones - PowerDNS Operator</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -46,7 +50,7 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#zone-deployment" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -81,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="PowerDNS Operator" class="md-header__button md-logo" aria-label="PowerDNS Operator" data-md-component="logo">
+    <a href="../.." title="PowerDNS Operator" class="md-header__button md-logo" aria-label="PowerDNS Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -106,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Snippet example
+              Zones
             
           </span>
         </div>
@@ -225,7 +234,7 @@
     
     
       <li class="md-tabs__item">
-        <a href=".." class="md-tabs__link">
+        <a href="../.." class="md-tabs__link">
           
   
     
@@ -241,11 +250,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../guides/zones/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -265,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../examples/powerdns.md" class="md-tabs__link">
+        <a href="../../examples/powerdns.md" class="md-tabs__link">
           
   
     
@@ -300,7 +311,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="PowerDNS Operator" class="md-nav__button md-logo" aria-label="PowerDNS Operator" data-md-component="logo">
+    <a href="../.." title="PowerDNS Operator" class="md-nav__button md-logo" aria-label="PowerDNS Operator" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 89 89">
@@ -366,7 +377,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href=".." class="md-nav__link ">
+            <a href="../.." class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -399,7 +410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/overview/" class="md-nav__link">
+      <a href="../../introduction/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -420,7 +431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/getting-started/" class="md-nav__link">
+      <a href="../../introduction/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -441,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/faq/" class="md-nav__link">
+      <a href="../../introduction/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -462,7 +473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../introduction/stability-support/" class="md-nav__link">
+      <a href="../../introduction/stability-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -487,8 +498,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -499,19 +512,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -522,7 +536,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Guides
@@ -533,10 +547,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../guides/zones/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Zones
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -545,6 +579,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -557,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../guides/rrsets/" class="md-nav__link">
+      <a href="../rrsets/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -629,7 +701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../examples/powerdns.md" class="md-nav__link">
+      <a href="../../examples/powerdns.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -667,6 +739,34 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#specification" class="md-nav__link">
+    <span class="md-ellipsis">
+      Specification
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -684,25 +784,53 @@
   
 
 
-  <h1>Snippet example</h1>
-
-<div class="highlight"><pre><span></span><code><span class="sb">```</span>yaml
-apiVersion:<span class="w"> </span>dns.cav.enablers.ob/v1alpha1
-kind:<span class="w"> </span>RRset
-metadata:
-<span class="w">  </span>labels:
-<span class="w">    </span>app.kubernetes.io/name:<span class="w"> </span>powerdns-operator
-<span class="w">    </span>app.kubernetes.io/managed-by:<span class="w"> </span>kustomize
-<span class="w">  </span>name:<span class="w"> </span>test.helloworld.com
-spec:
-<span class="w">  </span>comment:<span class="w"> </span>nothing<span class="w"> </span>to<span class="w"> </span>tell
-<span class="w">  </span>type:<span class="w"> </span>A
-<span class="w">  </span>ttl:<span class="w"> </span><span class="m">300</span>
-<span class="w">  </span>records:
-<span class="w">    </span>-<span class="w"> </span><span class="m">1</span>.1.1.1
-<span class="w">    </span>-<span class="w"> </span><span class="m">2</span>.2.2.2
-<span class="w">  </span>zoneRef:
-<span class="w">    </span>name:<span class="w"> </span>helloworld.com
+<h1 id="zone-deployment">Zone deployment</h1>
+<h2 id="specification">Specification</h2>
+<p>The specification of the <code>Zone</code> contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: center;">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>kind</td>
+<td>string</td>
+<td style="text-align: center;">Y</td>
+<td>Kind of the zone, one of "Native", "Master", "Slave", "Producer", "Consumer"</td>
+</tr>
+<tr>
+<td>nameservers</td>
+<td>[]string</td>
+<td style="text-align: center;">Y</td>
+<td>List of the nameservers of the zone</td>
+</tr>
+<tr>
+<td>catalog</td>
+<td>string</td>
+<td style="text-align: center;">N</td>
+<td>The catalog this zone is a member of</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Zone</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">powerdns-operator</span>
+<span class="w">    </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kustomize</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">nameservers</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1.helloworld.com</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2.helloworld.com</span>
+<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Master</span>
+<span class="w">  </span><span class="nt">catalog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catalog.helloworld</span>
 </code></pre></div>
 
 
@@ -754,10 +882,10 @@ spec:
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["announce.dismiss", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.tabs", "navigation.expand"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["announce.dismiss", "content.code.copy", "content.tooltips", "navigation.indexes", "navigation.tabs", "navigation.expand"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      <script src="../../assets/javascripts/bundle.525ec568.min.js"></script>
       
     
   </body>

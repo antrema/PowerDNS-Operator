@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://antrema.github.io/powerdns-operator/guides/rrsets/">
+        <link rel="canonical" href="https://antrema.github.io/powerdns-operator/guides/warnings/">
       
       
-        <link rel="prev" href="../zones/">
+        <link rel="prev" href="../rrsets/">
       
-      
-        <link rel="next" href="../warnings/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -24,7 +22,7 @@
     
     
       
-        <title>RRsets - PowerDNS Operator</title>
+        <title>Warnings - PowerDNS Operator</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rrset-deployment" class="md-skip">
+        <a href="#warnings-on-field-format" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RRsets
+              Warnings
             
           </span>
         </div>
@@ -550,6 +548,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../rrsets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RRsets
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -566,7 +585,7 @@
           
   
   <span class="md-ellipsis">
-    RRsets
+    Warnings
   </span>
   
 
@@ -577,7 +596,7 @@
         
   
   <span class="md-ellipsis">
-    RRsets
+    Warnings
   </span>
   
 
@@ -599,18 +618,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#specification" class="md-nav__link">
+  <a href="#deal-with-canonical-names" class="md-nav__link">
     <span class="md-ellipsis">
-      Specification
+      Deal with canonical names
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deal with canonical names">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNAME
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      PTR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mx" class="md-nav__link">
+    <span class="md-ellipsis">
+      MX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      SRV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#txt-records" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      TXT Records
     </span>
   </a>
   
@@ -620,27 +681,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../warnings/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Warnings
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -680,18 +720,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#specification" class="md-nav__link">
+  <a href="#deal-with-canonical-names" class="md-nav__link">
     <span class="md-ellipsis">
-      Specification
+      Deal with canonical names
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deal with canonical names">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cname" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNAME
     </span>
   </a>
   
 </li>
+        
+          <li class="md-nav__item">
+  <a href="#ptr" class="md-nav__link">
+    <span class="md-ellipsis">
+      PTR
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mx" class="md-nav__link">
+    <span class="md-ellipsis">
+      MX
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#srv" class="md-nav__link">
+    <span class="md-ellipsis">
+      SRV
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#txt-records" class="md-nav__link">
     <span class="md-ellipsis">
-      Example
+      TXT Records
     </span>
   </a>
   
@@ -715,95 +797,95 @@
   
 
 
-<h1 id="rrset-deployment">RRset deployment</h1>
-<h2 id="specification">Specification</h2>
-<p>The specification of the <code>RRset</code> contains the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th style="text-align: center;">Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>type</td>
-<td>string</td>
-<td style="text-align: center;">Y</td>
-<td>Type of the record (e.g. "A", "PTR", "MX")</td>
-</tr>
-<tr>
-<td>name</td>
-<td>string</td>
-<td style="text-align: center;">Y</td>
-<td>Name of the record</td>
-</tr>
-<tr>
-<td>ttl</td>
-<td>uint32</td>
-<td style="text-align: center;">Y</td>
-<td>DNS TTL of the records, in seconds</td>
-</tr>
-<tr>
-<td>records</td>
-<td>[]string</td>
-<td style="text-align: center;">Y</td>
-<td>All records in this Resource Record Set</td>
-</tr>
-<tr>
-<td>comment</td>
-<td>string</td>
-<td style="text-align: center;">N</td>
-<td>Comment on RRSet</td>
-</tr>
-<tr>
-<td>zoneRef</td>
-<td>ZoneRef</td>
-<td style="text-align: center;">Y</td>
-<td>ZoneRef reference the zone the RRSet depends on</td>
-</tr>
-</tbody>
-</table>
-<p>The specification of the <code>ZoneRef</code> contains the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th style="text-align: center;">Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td style="text-align: center;">Y</td>
-<td>Name of the zone</td>
-</tr>
-</tbody>
-</table>
-<h2 id="example">Example</h2>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<h1 id="warnings-on-field-format">Warnings on field format</h1>
+<h2 id="deal-with-canonical-names">Deal with canonical names</h2>
+<p>For some resources such as CNAME, PTR, MX, SRV, the records field MUST be in canonical format (end with a dot "."). See following examples.</p>
+<h3 id="cname">CNAME</h3>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test.helloworld.com</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test4.helloworld.com</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">comment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nothing to tell</span>
-<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CNAME</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test4</span>
 <span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
 <span class="w">  </span><span class="nt">records</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.2.2.2</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test1.helloworld.com.</span>
 <span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
 </code></pre></div>
-<blockquote>
-<p>Note: The name can be canonical or not.</p>
-</blockquote>
+<h3 id="ptr">PTR</h3>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.168.192.in-addr.arpa.helloworld.com</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PTR</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">records</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mailserver.helloworld.com.</span>
+<span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.168.192.in-addr.arpa</span>
+</code></pre></div>
+<h3 id="mx">MX</h3>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mx.helloworld.com</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MX</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;helloworld.com.&quot;</span>
+<span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">records</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;10</span><span class="nv"> </span><span class="s">mailserver1.helloworld.com.&quot;</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;20</span><span class="nv"> </span><span class="s">mailserver2.helloworld.com.&quot;</span>
+<span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+</code></pre></div>
+<h3 id="srv">SRV</h3>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database.srv.helloworld.com</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SRV</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;_database._tcp.myapp&quot;</span>
+<span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">records</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1 50 25565 test2.helloworld.com.</span>
+<span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+</code></pre></div>
+<h2 id="txt-records">TXT Records</h2>
+<p>Sometime, you may encounter the following error when applying a RRset custom resource:
+<div class="highlight"><pre><span></span><code><span class="nt">status</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">syncErrorDescription</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Record</span><span class="nv"> </span><span class="s">helloworld.com./TXT</span><span class="nv"> </span><span class="se">&#39;&#39;</span><span class="s">Welcome</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">helloworld.com</span>
+<span class="w">    </span><span class="s">domain</span><span class="se">&#39;&#39;</span><span class="s">:</span><span class="nv"> </span><span class="s">Parsing</span><span class="nv"> </span><span class="s">record</span><span class="nv"> </span><span class="s">content</span><span class="nv"> </span><span class="s">(try</span><span class="nv"> </span><span class="se">&#39;&#39;</span><span class="s">pdnsutil</span><span class="nv"> </span><span class="s">check-zone</span><span class="se">&#39;&#39;</span><span class="s">):</span><span class="nv"> </span><span class="s">Data</span><span class="nv"> </span><span class="s">field</span><span class="nv"> </span><span class="s">in</span>
+<span class="w">    </span><span class="s">DNS</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">start</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">quote</span><span class="nv"> </span><span class="s">(&quot;)</span><span class="nv"> </span><span class="s">at</span><span class="nv"> </span><span class="s">position</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="se">&#39;&#39;</span><span class="s">Welcome</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">helloworld.com</span>
+<span class="w">    </span><span class="s">domain</span><span class="se">&#39;&#39;</span><span class="s">&#39;</span>
+<span class="w">  </span><span class="nt">syncStatus</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Failed</span>
+</code></pre></div></p>
+<p>This error is due to a wrong format for the RRset.<br />
+TXT records MUST start AND end with an escaped quote (\"). See following example.  </p>
+<div class="highlight"><pre><span></span><code><span class="nn">---</span>
+<span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">txt.helloworld.com</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TXT</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;helloworld.com.&quot;</span>
+<span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">records</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;\&quot;Welcome</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">helloworld.com</span><span class="nv"> </span><span class="s">domain\&quot;&quot;</span>
+<span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+</code></pre></div>
 
 
 

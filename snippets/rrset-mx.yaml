@@ -12,3 +12,4 @@ spec:
     - "20 mailserver2.helloworld.com."
   zoneRef:
     name: helloworld.com
+    kind: Zone

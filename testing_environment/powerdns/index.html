@@ -10,13 +10,11 @@
       
       
       
-        <link rel="canonical" href="https://orange-opensource.github.io/powerdns-operator/introduction/stability-support/">
+        <link rel="canonical" href="https://orange-opensource.github.io/powerdns-operator/testing_environment/powerdns/">
       
       
-        <link rel="prev" href="../faq/">
+        <link rel="prev" href="../k3d/">
       
-      
-        <link rel="next" href="../../guides/clusterzones/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -24,7 +22,7 @@
     
     
       
-        <title>Stability and Support - PowerDNS Operator</title>
+        <title>PowerDNS - PowerDNS Operator</title>
       
     
     
@@ -76,7 +74,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stability-and-support" class="md-skip">
+        <a href="#powerdns-cluster-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stability and Support
+              PowerDNS
             
           </span>
         </div>
@@ -230,12 +228,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../.." class="md-tabs__link">
           
   
@@ -272,11 +268,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../testing_environment/k3d/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../k3d/" class="md-tabs__link">
           
   
     
@@ -343,8 +341,6 @@
       
   
   
-    
-  
   
   
     
@@ -365,17 +361,16 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_1" >
         
           
           
@@ -391,13 +386,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="">
+              <label class="md-nav__link " for="__nav_1" id="__nav_1_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
             Introduction
@@ -413,7 +408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../introduction/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -434,7 +429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../introduction/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -455,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
+      <a href="../../introduction/faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -473,30 +468,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Stability and Support
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../introduction/stability-support/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -505,35 +480,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#breaking-changes-introduced-in-v04x-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Breaking changes introduced in v0.4.x versions
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -714,8 +660,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -726,19 +674,20 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -749,7 +698,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Testing Environment
@@ -763,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../testing_environment/k3d/" class="md-nav__link">
+      <a href="../k3d/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,10 +730,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../testing_environment/powerdns/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -793,6 +751,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -825,23 +784,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#breaking-changes-introduced-in-v04x-versions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Breaking changes introduced in v0.4.x versions
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -858,30 +800,8 @@
   
 
 
-<h1 id="stability-and-support">Stability and Support<a class="headerlink" href="#stability-and-support" title="Permanent link">⚓</a></h1>
-<h2 id="breaking-changes-introduced-in-v04x-versions">Breaking changes introduced in v0.4.x versions<a class="headerlink" href="#breaking-changes-introduced-in-v04x-versions" title="Permanent link">⚓</a></h2>
-<p>We noticed lacks of security and delegation possibilities with &lt;=v0.3.x versions, so we decided to split previous <code>Zone</code> in 2 differents Custom Resources: </p>
-<ul>
-<li><code>ClusterZone</code> (cluster-wide resource)</li>
-<li><code>Zone</code> (namespaced resource)</li>
-</ul>
-<p>This decision introduces breaking changes</p>
-<ul>
-<li><code>Zone</code> was previously cluster-wide resource become namespace-scoped</li>
-<li><code>rrset.spec.zoneRef.kind</code> is a new mandatory field to indicate whereas the <code>RRset</code> depends on a <code>Zone</code> or a <code>ClusterZone</code></li>
-<li><code>rrset.status.syncErrorDescription</code> is replaced by a <code>Status.Condition</code> field as adviced by the community<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup></li>
-</ul>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>https://heidloff.net/article/storing-state-status-kubernetes-resources-conditions-operators-go/&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
-</li>
-<li id="fn:2">
-<p>https://maelvls.dev/kubernetes-conditions/&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
-</li>
-</ol>
-</div>
+<h1 id="powerdns-cluster-deployment">PowerDNS cluster deployment<a class="headerlink" href="#powerdns-cluster-deployment" title="Permanent link">⚓</a></h1>
+<p>For a full clustered powerdns instance, See <a href="https://github.com/powerdns-operator/powerdns-deployment">Here</a></p>
 
 
 

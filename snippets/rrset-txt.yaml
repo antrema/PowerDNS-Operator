@@ -11,3 +11,4 @@ spec:
     - "\"Welcome to the helloworld.com domain\""
   zoneRef:
     name: helloworld.com
+    kind: Zone

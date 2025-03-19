@@ -11,3 +11,4 @@ spec:
     - mailserver.helloworld.com.
   zoneRef:
     name: 1.168.192.in-addr.arpa
+    kind: Zone

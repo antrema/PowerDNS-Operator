@@ -11,3 +11,4 @@ spec:
     - 1 50 25565 test2.helloworld.com.
   zoneRef:
     name: helloworld.com
+    kind: Zone

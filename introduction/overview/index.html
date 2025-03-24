@@ -592,6 +592,8 @@
       
         
       
+        
+      
     
     
       
@@ -658,6 +660,27 @@
   
   <span class="md-ellipsis">
     Zones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/clusterrrsets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClusterRRsets
   </span>
   
 
@@ -915,7 +938,7 @@
 <h1 id="api-overview">API Overview<a class="headerlink" href="#api-overview" title="Permanent link">⚓</a></h1>
 <h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">⚓</a></h2>
 <p><img alt="architecture" src="../../assets/architecture.png" /></p>
-<p>The PowerDNS-Operator extends Kubernetes with Custom Resources, which define <strong><font color="red">Zones</font></strong> and <strong><font color="red">Records</font></strong>. The controller fetches <strong><font color="green">ClusterZones</font></strong>, <strong><font color="green">Zones</font></strong> and <strong><font color="green">RRsets</font></strong> from the cluster and creates PowerDNS elements (<strong><font color="red">Zones</font></strong> and <strong><font color="red">Records</font></strong>). Each modification on these Custom Resources will be applied on PowerDNS instance accordingly.</p>
+<p>The PowerDNS-Operator extends Kubernetes with Custom Resources, which define <strong><font color="red">Zones</font></strong> and <strong><font color="red">Records</font></strong>. The controller fetches <strong><font color="green">ClusterZones</font></strong>, <strong><font color="green">Zones</font></strong>, <strong><font color="green">ClusterRRsets</font></strong> and <strong><font color="green">RRsets</font></strong> from the cluster and creates PowerDNS elements (<strong><font color="red">Zones</font></strong> and <strong><font color="red">Records</font></strong>). Each modification on these Custom Resources will be applied on PowerDNS instance accordingly.</p>
 <h2 id="resource-model">Resource Model<a class="headerlink" href="#resource-model" title="Permanent link">⚓</a></h2>
 <p><img alt="example" src="../../assets/example.png" /></p>
 <p>To understand the mechanics of the operator let's start with an example.</p>
@@ -932,13 +955,12 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2.example.org</span>
 <span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Native</span>
 </code></pre></div></li>
-<li>Some <code>RRsets</code> in the <em>'example'</em> namespace can reference records related to the <code>ClusterZone</code> (such nameservers IPs, mail servers, SOA, ...).
+<li>Some <code>ClusterRRsets</code> resources, created by Platofrm Team, can reference records related to the <code>ClusterZone</code> (such nameservers IPs, mail servers, SOA, ...).
 <div class="highlight"><pre><span></span><code><span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">soa.example.org</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example.org.</span>
 <span class="w">  </span><span class="nt">records</span><span class="p">:</span>
@@ -950,10 +972,9 @@
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterZone</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mx.example.org</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MX</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;example.org.&quot;</span>
@@ -966,10 +987,9 @@
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterZone</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1.example.org</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1</span>
@@ -981,10 +1001,9 @@
 <span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterZone</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RRset</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2.example.org</span>
-<span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">example</span>
 <span class="nt">spec</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
 <span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2</span>
@@ -1051,10 +1070,10 @@
 <li>PDNS-OP requests PowerDNS API to create/modify related 'Nameservers' entries</li>
 <li>PDNS-OP updates resource Status (including Serial) and its metrics</li>
 </ol>
-<p>The PowerDNS-Operator reconciles <code>RRsets</code> in the following manner:</p>
+<p>The PowerDNS-Operator reconciles <code>ClusterRRsets</code> or <code>RRsets</code> in the following manner:</p>
 <ol>
 <li>PDNS-OP verifies that the corresponding <code>ClusterZone</code>/<code>Zone</code> already exists, if not, It schedule a new reconciliation later on</li>
-<li>PDNS-OP verifies that the corresponding <code>ClusterZone</code>/<code>Zone</code> is not in 'Failed' status, in that case , <code>RRset</code> status is defined as 'Failed'</li>
+<li>PDNS-OP verifies that the corresponding <code>ClusterZone</code>/<code>Zone</code> is not in 'Failed' status, in that case , <code>RRset</code> or <code>ClusterRRset</code> status is defined as 'Failed'</li>
 <li>PDNS-OP requests PowerDNS API to create/modify the corresponding resource</li>
 <li>PDNS-OP updates resource Status and its metrics</li>
 <li>PDNS-OP schedule a reconciliation to update <code>ClusterZone</code>/<code>Zone</code> Status (including Serial)</li>
@@ -1063,8 +1082,8 @@
 <p>The PowerDNS-Operator is designed to target the following persona:</p>
 <ul>
 <li>Cluster Operator: The cluster operator is responsible for configuring PowerDNS instance, ,</li>
-<li>Platform Team: The Platform team is responsible for defining the architecture <code>ClusterZone</code>, <code>Zone</code> and <code>RRset</code>, setting the permissions for application team (e.g. permissions to create Zones in their namespaces),</li>
-<li>Application Team: The Application developer is responsible for defining <code>RRsets</code> related to their services.</li>
+<li>Platform Team: The Platform team is responsible for defining the architecture <code>ClusterZone</code>, <code>Zone</code>, <code>ClusterRRset</code> and <code>RRset</code>, setting the permissions for application team (e.g. permissions to create Zones in their namespaces),</li>
+<li>Application Team: The Application developer is responsible for defining <code>RRset</code> (eventually <code>Zone</code>) related to their services.</li>
 </ul>
 <p>Each persona will roughly map to a Kubernetes RBAC role. Depending on your environment these roles can map to a single user. Note: The PowerDNS Operator does not manage the PowerDNS instance lifecycle.</p>
 

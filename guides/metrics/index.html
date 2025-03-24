@@ -515,6 +515,8 @@
       
         
       
+        
+      
     
     
       
@@ -582,6 +584,27 @@
   
   <span class="md-ellipsis">
     Zones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../clusterrrsets/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClusterRRsets
   </span>
   
 
@@ -883,6 +906,12 @@
 <td>name, namespace ,status</td>
 </tr>
 <tr>
+<td>clusterrrsets_status</td>
+<td>gauge</td>
+<td>Statuses of ClusterRRsets processed</td>
+<td>fqdn, name, status, type</td>
+</tr>
+<tr>
 <td>rrsets_status</td>
 <td>gauge</td>
 <td>Statuses of RRsets processed</td>
@@ -891,12 +920,12 @@
 </tbody>
 </table>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">⚓</a></h2>
-<p>The following metrics are based on the example defined <a href="/powerdns-operator/introduction/overview/#resource-model">here</a></p>
+<p>The following metrics are based on the example defined <a href="/introduction/overview/#resource-model">here</a></p>
 <div class="highlight"><pre><span></span><code>clusterzones_status{name=&quot;example.org&quot;,status=&quot;Succeeded&quot;} 1
-rrsets_status{fqdn=&quot;example.org.&quot;,name=&quot;mx.example.org&quot;,namespace=&quot;example&quot;,status=&quot;Succeeded&quot;,type=&quot;MX&quot;} 1
-rrsets_status{fqdn=&quot;example.org.&quot;,name=&quot;soa.example.org&quot;,namespace=&quot;example&quot;,status=&quot;Succeeded&quot;,type=&quot;SOA&quot;} 1
-rrsets_status{fqdn=&quot;ns1.example.org.&quot;,name=&quot;ns1.example.org&quot;,namespace=&quot;example&quot;,status=&quot;Succeeded&quot;,type=&quot;A&quot;} 1
-rrsets_status{fqdn=&quot;ns2.example.org.&quot;,name=&quot;ns2.example.org&quot;,namespace=&quot;example&quot;,status=&quot;Succeeded&quot;,type=&quot;A&quot;} 1
+clusterrrsets_status{fqdn=&quot;example.org.&quot;,name=&quot;mx.example.org&quot;,status=&quot;Succeeded&quot;,type=&quot;MX&quot;} 1
+clusterrrsets_status{fqdn=&quot;example.org.&quot;,name=&quot;soa.example.org&quot;,status=&quot;Succeeded&quot;,type=&quot;SOA&quot;} 1
+clusterrrsets_status{fqdn=&quot;ns1.example.org.&quot;,name=&quot;ns1.example.org&quot;,status=&quot;Succeeded&quot;,type=&quot;A&quot;} 1
+clusterrrsets_status{fqdn=&quot;ns2.example.org.&quot;,name=&quot;ns2.example.org&quot;,status=&quot;Succeeded&quot;,type=&quot;A&quot;} 1
 
 zones_status{name=&quot;myapp1.example.org&quot;,namespace=&quot;myapp1&quot;,status=&quot;Succeeded&quot;} 1
 rrsets_status{fqdn=&quot;myapp1.example.org.&quot;,name=&quot;soa.myapp1.example.org&quot;,namespace=&quot;myapp1&quot;,status=&quot;Succeeded&quot;,type=&quot;SOA&quot;} 1

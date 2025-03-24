@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://orange-opensource.github.io/powerdns-operator/guides/clusterzones/">
+        <link rel="canonical" href="https://orange-opensource.github.io/powerdns-operator/guides/clusterrrsets/">
       
       
-        <link rel="prev" href="../../introduction/stability-support/">
+        <link rel="prev" href="../zones/">
       
       
-        <link rel="next" href="../zones/">
+        <link rel="next" href="../rrsets/">
       
       
       <link rel="icon" href="../../assets/favicon.png">
@@ -24,7 +24,7 @@
     
     
       
-        <title>ClusterZones - PowerDNS Operator</title>
+        <title>ClusterRRsets - PowerDNS Operator</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#clusterzone-deployment" class="md-skip">
+        <a href="#clusterrrset-deployment" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ClusterZones
+              ClusterRRsets
             
           </span>
         </div>
@@ -256,7 +256,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../clusterzones/" class="md-tabs__link">
           
   
     
@@ -555,6 +555,48 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../clusterzones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ClusterZones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zones/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Zones
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -571,7 +613,7 @@
           
   
   <span class="md-ellipsis">
-    ClusterZones
+    ClusterRRsets
   </span>
   
 
@@ -582,7 +624,7 @@
         
   
   <span class="md-ellipsis">
-    ClusterZones
+    ClusterRRsets
   </span>
   
 
@@ -625,48 +667,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../zones/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Zones
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../clusterrrsets/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ClusterRRsets
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -899,9 +899,9 @@
   
 
 
-<h1 id="clusterzone-deployment">ClusterZone deployment<a class="headerlink" href="#clusterzone-deployment" title="Permanent link">⚓</a></h1>
+<h1 id="clusterrrset-deployment">ClusterRRset deployment<a class="headerlink" href="#clusterrrset-deployment" title="Permanent link">⚓</a></h1>
 <h2 id="specification">Specification<a class="headerlink" href="#specification" title="Permanent link">⚓</a></h2>
-<p>The specification of the <code>ClusterZone</code> contains the following fields:</p>
+<p>The specification of the <code>ClusterRRset</code> contains the following fields:</p>
 <table>
 <thead>
 <tr>
@@ -913,44 +913,88 @@
 </thead>
 <tbody>
 <tr>
+<td>type</td>
+<td>string</td>
+<td style="text-align: center;">Y</td>
+<td>Type of the record (e.g. "A", "PTR", "MX")</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td style="text-align: center;">Y</td>
+<td>Name of the record</td>
+</tr>
+<tr>
+<td>ttl</td>
+<td>uint32</td>
+<td style="text-align: center;">Y</td>
+<td>DNS TTL of the records, in seconds</td>
+</tr>
+<tr>
+<td>records</td>
+<td>[]string</td>
+<td style="text-align: center;">Y</td>
+<td>All records in this Resource Record Set</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>string</td>
+<td style="text-align: center;">N</td>
+<td>Comment on RRSet</td>
+</tr>
+<tr>
+<td>zoneRef</td>
+<td>ZoneRef</td>
+<td style="text-align: center;">Y</td>
+<td>ZoneRef reference the zone the ClusterRRSet depends on</td>
+</tr>
+</tbody>
+</table>
+<p>The specification of the <code>ZoneRef</code> contains the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th style="text-align: center;">Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td style="text-align: center;">Y</td>
+<td>Name of the <code>ClusterZone</code>/<code>Zone</code></td>
+</tr>
+<tr>
 <td>kind</td>
 <td>string</td>
 <td style="text-align: center;">Y</td>
-<td>Kind of the zone, one of "Native", "Master", "Slave", "Producer", "Consumer"</td>
-</tr>
-<tr>
-<td>nameservers</td>
-<td>[]string</td>
-<td style="text-align: center;">Y</td>
-<td>List of the nameservers of the zone</td>
-</tr>
-<tr>
-<td>catalog</td>
-<td>string</td>
-<td style="text-align: center;">N</td>
-<td>The catalog this zone is a member of</td>
-</tr>
-<tr>
-<td>soa_edit_api</td>
-<td>string</td>
-<td style="text-align: center;">N</td>
-<td>The SOA-EDIT-API metadata item, one of "DEFAULT", "INCREASE", "EPOCH", defaults to "DEFAULT"</td>
+<td>Kind of zone (Zone/ClusterZone)</td>
 </tr>
 </tbody>
 </table>
 <h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">⚓</a></h2>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dns.cav.enablers.ob/v1alpha2</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterZone</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterRRset</span>
 <span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test.helloworld.com</span>
 <span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">nameservers</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns1.helloworld.com</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ns2.helloworld.com</span>
-<span class="w">  </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Master</span>
-<span class="w">  </span><span class="nt">catalog</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">catalog.helloworld</span>
-<span class="w">  </span><span class="nt">soa_edit_api</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EPOCH</span>
+<span class="w">  </span><span class="nt">comment</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nothing to tell</span>
+<span class="w">  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
+<span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">300</span>
+<span class="w">  </span><span class="nt">records</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.1.1.1</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.2.2.2</span>
+<span class="w">  </span><span class="nt">zoneRef</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helloworld.com</span>
+<span class="w">    </span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;ClusterZone&quot;</span>
 </code></pre></div>
+<blockquote>
+<p>Note: The name can be canonical or not. If not, the name of the <code>ClusterZone</code>/<code>Zone</code> will be appended</p>
+</blockquote>
 
 
 
